@@ -1,0 +1,12 @@
+#include <iostream>
+#include <stdlib.h>>
+
+int main() {
+	system("COLOR 0A");
+	std::cout<<" ---------------------------\n";
+	std::cout << "|      Hello world!        |\n";
+	std::cout<<"|   I'm a C++ program!!!   |\n";
+	std::cout<<" ---------------------------\n";
+	return 0;
+	
+}

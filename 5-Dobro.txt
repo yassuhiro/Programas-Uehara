@@ -1,0 +1,20 @@
+#include <iostream>
+#include <stdlib.h>
+#include <typeinfo>
+using namespace std;
+
+int main() {
+	int i;
+	cout << "Por favor, entre com um valor inteiro: ";
+	cin >> i;
+	
+	system("cls");
+	
+	cout << "O valor digitado: " << i <<"\n";
+	cout << "O dobro do valor digitado: " << i * 2 << "\n";
+	
+	return 0;
+	
+	
+	
+}
