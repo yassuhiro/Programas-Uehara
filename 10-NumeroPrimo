@@ -1,0 +1,26 @@
+#include <cstdlib>
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int n,m,x;
+    
+    cout<<"Insira um numero: ";
+    cin>>n;
+    x=n-1;
+    while(m!=0 && x>0){
+    m=n%x;
+    x--;
+    }
+    
+    if(x==0)
+    {
+    cout<<"NUMERO PRIMO!!\n";
+    }else{
+    cout<<"NUMERO NAO PRIMO!!\n";
+    }
+    system("PAUSE");
+    return 0;
+}
