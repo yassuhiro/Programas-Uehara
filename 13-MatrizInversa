@@ -1,0 +1,159 @@
+#include <cstdlib>
+#include <iostream>
+#include <stdlib.h>
+
+
+using namespace std;
+
+int main(int argc, char *argv[])
+{
+int linha, coluna, coluna2, valor, i, j, cont, cont_repita, pivo, h, coluna3;
+int soma, divisao, coluna4, g, ni, nj, cont_repita2, valori, valorj, det, ordem;
+int mat1, mat2, mat3, mat4, matriz[100][100], veti[100], vetj[100], div;
+
+
+cout << "A matriz deve ser quadrada\n\n";
+cout << "Informe a ordem da matriz...: "; cin >> ordem;
+linha = ordem;
+coluna = ordem;
+coluna2= 2*coluna;
+coluna3=coluna+1;
+coluna4=coluna+(coluna-1);
+valori=1;
+valorj=1;
+
+for(i=0; i<linha; i++){
+		 for(j=0; j<coluna; j++){
+				  cout << "Informe o valor.["<<i<<","<<j<<"].: "; cin >> valor;
+				  matriz[i][j]=valor;
+				  }
+		 }
+		 
+if(ordem == 2){
+		 for(i=0; i<linha; i++){
+				  for(j=0; j<coluna; j++){
+						   if(i==j) valori=matriz[i][j]*valori;
+						   else valorj=matriz[i][j]*valorj;
+						   }
+				  }
+				  det=valori-valorj;
+				  }
+				  else{
+					   for(i=0; i<linha; i++){
+								for(j=0; j<coluna3; j++){
+										 g=j-coluna;
+										 valor=matriz[i][g];
+										 matriz[i][j]=valor;
+										 }
+								}
+								for(i=0; i<1; i++){
+										 for(j=0; j<coluna; j++){
+												  valor=1;
+												  ni=1;
+												  nj=j;
+												  cont_repita2=1;
+												  while(cont_repita2<=linha){
+																			 cont_repita2=cont_repita2+1;
+																			 valor=valor*matriz[ni][nj];
+																			 ni = ni + 1;
+																			 nj=nj+1;
+																			 }
+												  veti[j]=valor;
+												  }
+										 }
+								for(i=linha; i<=linha; i++){
+											 for(j=0; j<coluna; j++){
+													  valor=1;
+													  ni=i;
+													  nj=j;
+													  cont_repita2=linha;
+													  while (cont_repita2 - 1){
+															cont_repita2 = cont_repita2 -1;
+															valor=valor*matriz[ni][nj];
+															ni=ni - 1;
+															nj=nj+1;
+															}
+													  vetj[j]=valor;
+													  }
+											 }
+								valori=0;
+								valorj=0;
+								for(j=0; j<coluna; j++){
+										 valori= veti[j]+valori;
+										 valorj= veti[j]+valorj;
+										 } 
+								det=valori - valorj;
+								}
+
+if (det==0){
+			cout<<"Impossivel calcular a matriz inversa se o determinante for 0";
+			}
+			else{
+				 for(i=0; i<linha; i++){
+						  for(j=0; j<coluna; j++){
+								   if(i==j){
+											valor=1;
+											}
+											else{
+												 valor=0;
+												 }
+											h=j+coluna;
+											matriz[i][h]=valor;
+								   }
+						  cont_repita=0;
+						  cont=0;
+						  do{
+								 cont_repita=cont_repita+1;
+								 if (cont_repita > linha){
+												 break;
+												 cont=cont+2;
+												 for(i=0; i<linha; i++){
+														  for(j=0; j<coluna; j++){
+																   soma =i+j;
+																   if(i==j && soma == cont){
+																		   pivo=matriz[i][j];
+																		   div=soma/2;
+																		   }
+																   }
+														  }
+												 for(i=0; i<linha; i++){
+														  for(j=0; j<coluna2; j++){
+																   if(i!=div || j!=div){
+																			 valor=matriz[i][j]-(matriz[div][j]*matriz[i][div]/pivo);
+																			 matriz[i][j]=valor;
+																			 }
+																   }
+														  }
+												 for(i=0; i<linha; i++){
+														  for(j=0; j<coluna2; j++){
+																   if(i!=div && j==div){
+																			 valor=0;
+																			 matriz[i][j]=valor;
+																			 }
+																   }
+														  }
+												 for(i=0; i<linha; i++){
+														  for(j=0; j<coluna2; j++){
+																   if(i==div){
+																			  valor=matriz[i][j]/pivo;
+																			  matriz[i][j]=valor;
+																			  }
+																   }
+														  }
+												 }
+								 }while(cont_repita < linha);
+								 
+
+			}	  
+			}			  
+cout << "A Matriz inversa e...:";
+for(i=0; i<linha; i++){
+		for(j=0; j<coluna; j++){
+						cout << matriz[i][j];
+						cout<<"\n";
+						}
+		 }
+system("PAUSE");
+ return EXIT_SUCCESS;
+
+}
