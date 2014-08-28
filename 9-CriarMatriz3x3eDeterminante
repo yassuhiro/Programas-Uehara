@@ -1,0 +1,38 @@
+#include <iostream>
+#include <stdlib.h>
+#include <typeinfo>
+
+using namespace std;
+
+int main() {
+	int i,j;
+	int A[3][3];
+	
+	cout<<"Sua matriz A: \n";
+	
+	for(i=0;i<=2;i++){
+		for(j=0;j<=2;j++){
+			system("cls");
+			cout<<"Digite o valor da linha " << i + 1 << " e coluna " << j + 1 << ": ";
+			cin>>A[i][j];
+			}
+	}
+	
+	system("cls");
+	cout<<"A matriz digitada foi: \n";
+	
+	for(i=0;i<=2;i++){
+		for(j=0;j<=2;j++){
+			cout<<A[i][j]<<" ";
+			}
+	cout<<"\n";
+	}
+	
+	cout<<"\n\n\nO determinate da Matriz digitada: " << ((A[0][0]*A[1][1]*A[2][2]+A[0][1]*A[1][2]*A[2][0]+A[0][2]*A[1][0]*A[2][1])-(A[2][0]*A[1][1]*A[0][2]+A[2][1]*A[1][2]*A[0][0]+A[2][2]*A[1][0]*A[0][1]));
+	
+	
+	return 0;
+	
+	
+	
+}
